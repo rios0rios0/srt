@@ -61,7 +61,7 @@ SRT.res          # Compiled resource file (icons)
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+This project is no longer actively maintained. See [CONTRIBUTING.md](CONTRIBUTING.md) for historical build information.
 
 ## License
 
