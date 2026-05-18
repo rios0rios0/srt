@@ -10,7 +10,7 @@ SRT (SecurityRobot Tool) is a historical Windows desktop utility built with **Ob
 srt/
 ├── .github/
 │   └── copilot-instructions.md  # This file
-├── .gitignore                    # VCS ignore rules for Delphi build artifacts
+├── .gitignore                    # VCS ignore rules (Java/IDE templates, not Delphi-specific)
 ├── SRT.dpr                       # Delphi project file – application entry point, creates TFrmPrincipal
 ├── SRT.res                       # Compiled application resource file (icons)
 ├── USRT.pas                      # Main unit – ARP-based router discovery, UPnP port mapping, hidden subprocess execution

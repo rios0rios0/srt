@@ -16,6 +16,10 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+### Changed
+
+- refreshed `.github/copilot-instructions.md` to correct the `.gitignore` description
+
 ## [1.0.1] - 2026-05-08
 
 ### Changed
