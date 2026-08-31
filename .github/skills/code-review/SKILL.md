@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: "Review pull requests and diffs in srt — the preserved Delphi 7 Security Robot Terminal that discovers a router by ARP and maps a UPnP port — against the rios0rios0/guide standards, with extra weight on the hard-coded MAC address, pipe handling, and the security implications of opening a port. Use when reviewing a PR, a branch, or staged changes here."
+description: "Review pull requests and diffs in srt — the preserved Delphi 7 SecurityRobot Tool that discovers a router by ARP and maps a UPnP port — against the rios0rios0/guide standards, with extra weight on the hard-coded MAC address, pipe handling, and the security implications of opening a port. Use when reviewing a PR, a branch, or staged changes here."
 ---
 
 # Code review — `srt`
