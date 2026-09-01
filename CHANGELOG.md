@@ -22,6 +22,13 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-09-01
+
+### Changed
+
+- corrected `srt`'s name to `SecurityRobot Tool` in the `.github/skills/code-review/SKILL.md` description, which had expanded it as "Security Robot Terminal"
+- refreshed `.github/copilot-instructions.md` repository structure to list the `.changes/`, `.github/skills/`, and `.github/workflows/` directories
+
 ## [1.2.0] - 2026-08-28
 
 ### Added
