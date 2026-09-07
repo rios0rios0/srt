@@ -68,7 +68,7 @@ them before the generic ones.
 - **`RunDosInMemo` builds a command line and pipes its output.** Any value that reaches the command string must be validated — a shell metacharacter from a form field is command injection. The pipe handles and the `TSecurityAttributes` with `bInheritHandle = True` must be closed on every path, including the error paths, or the child process hangs forever.
 - **ARP output parsing is locale- and version-dependent.** A parser change must handle the empty and unexpected-format cases rather than indexing blindly into the memo text.
 - **The form conventions are the standard here**: `T`-prefixed types, component prefixes (`Btn`, `Mmo`, `Se`), auto-generated `<Component><Event>` handler names, `try/except` with `ShowMessage` for user-facing errors, Brazilian Portuguese UI strings.
-- **Treat this as an archive.** No modernisation, no reformatting, no new dependencies. There is no build system, no linter, no CI, and — unusually for this account — no `CLAUDE.md`; do not report their absence as a defect.
+- **Treat this as an archive.** No modernisation, no reformatting, no new dependencies. There is no build system for the Delphi source and no linter; the only CI is the shared `checks.yaml` PR gate, which checks rebase status and the changelog rule but does not compile or test the code. Unusually for this account there is no `CLAUDE.md`; do not report the absence of a linter, a build, or `CLAUDE.md` as a defect.
 - **`.gitignore` here is a Java/IDE template, not Delphi-specific.** Delphi build output (`.dcu`, `.exe`, `.dsk`, `.cfg`) must still not be committed.
 
 ### Commands a reviewer should be able to quote
@@ -87,7 +87,7 @@ and YAML blocks inside Markdown.
 
 ## Tests
 
-There is no test suite, no linter, and no CI. Verification is compiling in Delphi 7 and exercising discovery and mapping against a lab router you own — then removing the mapping afterwards.
+There is no test suite, no linter, and no build of the Delphi source. The one CI job is the shared `checks.yaml` gate on pull requests (rebase status and the changelog rule); it does not compile or test the application. Verification is compiling in Delphi 7 and exercising discovery and mapping against a lab router you own — then removing the mapping afterwards.
 
 ## Documentation and change control
 
@@ -103,7 +103,8 @@ hand.
 - A backward-incompatible change to the public interface additionally carries `--breaking`.
   The kind alone never triggers a major bump.
 - A hand-edited `CHANGELOG.md`, or a code change with no fragment under
-  `.changes/unreleased/`, is a **Critical** finding — `chlog check` fails the build for it.
+  `.changes/unreleased/`, is a **Critical** finding — the shared `checks.yaml` PR gate
+  (`code-check > quality:basic-checks`) enforces the changelog rule and fails the pull request for it.
 - Fragment bodies start with a lowercase verb in simple past tense, capitalise proper nouns
   (GitHub, Go, Docker), and wrap code identifiers and versions in backticks.
 - `README.md` is updated whenever usage, setup, configuration, or architecture changes;
@@ -134,7 +135,7 @@ See [Security](https://github.com/rios0rios0/guide/wiki/Security).
   environment variables or a secret manager — never in source, tests, fixtures, or the
   changelog. A secret that reaches a commit must be rotated, not merely deleted.
 - **Never write a PEM header sentinel or a realistic key shape into a fixture**
-  (`ghp_…`, `sk-…`, `AKIA…`, `xoxb-…`, JWT-shaped strings, or the dashed `BEGIN …` banners).
+  (GitHub `ghp_` prefixes, OpenAI `sk-` prefixes, AWS `AKIA` prefixes, Slack `xoxb` prefixes, JWT-shaped strings, or the dashed `BEGIN …` banners).
   Gitleaks matches the shape, not the value, so a placeholder that merely *looks* like a
   credential fails the pipeline. Use inert placeholders such as `fixture-token-placeholder`.
 - **Suppressions must be justified.** Entries in `.gitleaksignore`, `.trivyignore`,
@@ -151,7 +152,7 @@ A review that raises noise gets ignored. Do not report these:
 
 - Anything that amounts to "this is old code". Modernising idiom, renaming identifiers, reformatting, or introducing a framework into a preserved archive is out of scope and destroys the historical record.
 - Mixed Portuguese and English identifiers and UI strings — that is the original code.
-- The absence of tests, linting, CI, or a `CLAUDE.md`.
+- The absence of tests, linting, a Delphi build, or a `CLAUDE.md`.
 - The generic Java-flavoured `.gitignore`.
 - Anything the guide does not require and this file does not list, unless it is a genuine correctness or security defect — say so plainly and label it a Suggestion.
 
