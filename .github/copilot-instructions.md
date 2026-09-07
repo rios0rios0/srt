@@ -14,7 +14,7 @@ srt/
 │   ├── copilot-instructions.md   # This file
 │   ├── skills/
 │   │   └── code-review/SKILL.md  # Tailored GitHub Copilot code-review skill
-│   └── workflows/                # Claude reusable-workflow callers (claude-review, claude-mention)
+│   └── workflows/                # Reusable-workflow callers: checks (PR gate), claude-review, claude-mention
 ├── .gitignore                    # VCS ignore rules (Java/IDE templates, not Delphi-specific)
 ├── SRT.dpr                       # Delphi project file – application entry point, creates TFrmPrincipal
 ├── SRT.res                       # Compiled application resource file (icons)
@@ -92,7 +92,7 @@ There is no automated build system. Compilation requires a Windows machine with 
 
 ## Tests and Linting
 
-This project has no automated tests or linters, and no build or deployment pipeline. The only workflows are `.github/workflows/claude-review.yaml` and `.github/workflows/claude-mention.yaml`, which call the shared Claude reusable workflows in `rios0rios0/pipelines` and need the `CLAUDE_CODE_OAUTH_TOKEN` secret. The project is a preserved historical archive and no testing infrastructure exists.
+This project has no automated tests, linters, or build pipeline for the Delphi source. Three workflows call shared reusable workflows in `rios0rios0/pipelines`: `checks.yaml` runs the `code-check > quality:basic-checks` gate (rebase status and the changelog rule) on pull requests to `main`; `claude-review.yaml` and `claude-mention.yaml` run the Claude code review and the `@claude` mention responder, both needing the `CLAUDE_CODE_OAUTH_TOKEN` secret. None of them compile or test the application — it remains a preserved historical archive with no testing infrastructure.
 
 ## Development Workflow
 
